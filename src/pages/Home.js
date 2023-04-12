@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
-    return <Wrapper>Home</Wrapper>;
+    const data = {
+        name: "E-Commerce Shop",
+    };
+    return <HeroSection nameData={data} />;
 };
-const Wrapper = styled.section`
-    background-color: ${({ theme }) => theme.colors.bg};
-    width: 20rem;
-    height: 20rem;
-`;
+
 export default Home;
