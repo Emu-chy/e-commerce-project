@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../Context/Product-context";
@@ -9,6 +11,7 @@ import PageNavigation from "../components/PageNavigation";
 import SingleProductImage from "../components/SingleProductImage";
 import { Container } from "../styles/Container";
 import StarAndReview from "../components/StarAndReview";
+import AddToCard from "../components/AddToCard";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -34,6 +37,9 @@ const SingleProduct = () => {
         getSingleProduct(`${API}?id=${id}`);
     }, []);
 
+    if (isSingleLoading) {
+        return <div>....Loading</div>;
+    }
     return (
         <Wrapper>
             <PageNavigation title={name} />
@@ -80,6 +86,8 @@ const SingleProduct = () => {
                                 Brand :<span> {company} </span>
                             </p>
                         </div>
+                        <hr />
+                        {stock > 0 && <AddToCard product={singleProduct} />}
                     </div>
                 </div>
             </Container>
