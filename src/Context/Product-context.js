@@ -10,11 +10,13 @@ const AppProvider = ({ children }) => {
         isError: false,
         products: [],
         featureProducts: [],
+        isSingleLoading: false,
+        singleProduct: {},
     };
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const url = " https://api.pujakaitem.com/api/products";
     const getPorducts = async () => {
+        const url = "https://api.pujakaitem.com/api/products";
         dispatch({ type: "SET_LOADING" });
         try {
             const { data } = await axios.get(url);
@@ -24,13 +26,25 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const getSingleProduct = async (url) => {
+        dispatch({ type: "SET_SINGLE_LOADING" });
+        try {
+            const res = await axios.get(url);
+            const singleProduct = await res.data;
+            dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
+        } catch (error) {
+            dispatch({ type: "SET_SINGLE_ERROR" });
+        }
+    };
     useEffect(() => {
         getPorducts();
     }, []);
 
     return (
         <>
-            <Appcontext.Provider value={{ ...state }}>{children}</Appcontext.Provider>
+            <Appcontext.Provider value={{ ...state, getSingleProduct }}>
+                {children}
+            </Appcontext.Provider>
         </>
     );
 };
