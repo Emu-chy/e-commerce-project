@@ -8,6 +8,7 @@ import styled from "styled-components";
 import PageNavigation from "../components/PageNavigation";
 import SingleProductImage from "../components/SingleProductImage";
 import { Container } from "../styles/Container";
+import StarAndReview from "../components/StarAndReview";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -46,7 +47,7 @@ const SingleProduct = () => {
                     {/* product dAta  */}
                     <div className="product-data">
                         <h2>{name}</h2>
-
+                        <StarAndReview stars={stars} reviews={reviews} />
                         <p className="product-data-price">MRP:{price}</p>
 
                         <p>{description}</p>
