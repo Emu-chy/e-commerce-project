@@ -6,9 +6,9 @@ const SingleProductImage = ({ imgs = [{ url: "" }] }) => {
     return (
         <Wrapper>
             <div className="grid grid-four-column">
-                {imgs.map((img, id) => {
+                {imgs.map((img) => {
                     return (
-                        <figure key={id}>
+                        <figure key={img.id}>
                             <img
                                 src={img.url}
                                 alt={img.filename}

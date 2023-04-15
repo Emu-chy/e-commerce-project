@@ -6,7 +6,7 @@ import CardAmountToggle from "./CardAmountToggle";
 import { Button } from "../styles/Button.js";
 
 const AddToCard = ({ product }) => {
-    const { id, colors, stock } = product;
+    const { colors, stock } = product;
     const [color, setColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
 
@@ -24,7 +24,7 @@ const AddToCard = ({ product }) => {
                     {colors.map((currentColor) => {
                         return (
                             <button
-                                key={id}
+                                key={currentColor.id}
                                 className={color === currentColor ? "btnStyle active" : "btnStyle"}
                                 style={{ backgroundColor: currentColor }}
                                 onClick={() => setColor(currentColor)}
