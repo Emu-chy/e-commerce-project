@@ -11,7 +11,7 @@ import PageNavigation from "../components/PageNavigation";
 import SingleProductImage from "../components/SingleProductImage";
 import { Container } from "../styles/Container";
 import StarAndReview from "../components/StarAndReview";
-import AddToCard from "../components/AddToCard";
+import AddToCart from "../components/AddToCart";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -87,7 +87,7 @@ const SingleProduct = () => {
                             </p>
                         </div>
                         <hr />
-                        {stock > 0 && <AddToCard product={singleProduct} />}
+                        {stock > 0 && <AddToCart product={singleProduct} />}
                     </div>
                 </div>
             </Container>

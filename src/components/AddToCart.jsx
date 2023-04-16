@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import CardAmountToggle from "./CardAmountToggle";
+import CartAmountToggle from "./CartAmountToggle";
 import { Button } from "../styles/Button.js";
+import { useCartContext } from "../Context/Cart-context";
 
-const AddToCard = ({ product }) => {
-    const { colors, stock } = product;
+const AddToCart = ({ product }) => {
+    const { addToCart } = useCartContext();
+    const { id, colors, stock } = product;
     const [color, setColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
 
@@ -34,13 +36,13 @@ const AddToCard = ({ product }) => {
                         );
                     })}
                 </p>
-                <CardAmountToggle
+                <CartAmountToggle
                     amount={amount}
                     setIncrement={setIncrement}
                     setDecrement={setDecrement}
                 />
             </div>
-            <NavLink to="/cart">
+            <NavLink to="/cart" onClick={() => addToCart(id, color, amount, product)}>
                 <Button> Add To Card</Button>
             </NavLink>
         </Wrapper>
@@ -92,4 +94,4 @@ const Wrapper = styled.section`
         }
     }
 `;
-export default AddToCard;
+export default AddToCart;
