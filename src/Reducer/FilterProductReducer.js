@@ -63,6 +63,22 @@ const FilterProductReducer = (state, action) => {
                     [name]: value,
                 },
             };
+
+        case "FILTER_PRODUCTS":
+            let { all_products } = state;
+            let filteredProduct = [...all_products];
+            const { text } = state.filters;
+
+            if (text) {
+                filteredProduct = filteredProduct.filter((curElm) => {
+                    return curElm.name.toLowerCase().includes(text);
+                });
+            }
+
+            return {
+                ...state,
+                filter_products: filteredProduct,
+            };
         default:
             return state;
     }

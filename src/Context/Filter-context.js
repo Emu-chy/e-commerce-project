@@ -36,8 +36,9 @@ export const FilterContextProvider = ({ children }) => {
     };
 
     useEffect(() => {
+        dispatch({ type: "FILTER_PRODUCTS" });
         dispatch({ type: "SORTING_PRODUCTS" });
-    }, [products, state.sorting_value]);
+    }, [products, state.sorting_value, state.filters]);
 
     useEffect(() => {
         dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });

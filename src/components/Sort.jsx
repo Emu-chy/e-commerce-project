@@ -15,13 +15,15 @@ const Sort = () => {
                     <BsFillGridFill className="icon" />
                 </button>
                 <button
-                    className={!grid_view ? "active sort-btn" : "sort-btn"}
+                    className={!grid_view ? "sort-btn active" : "sort-btn"}
                     onClick={setListView}
                 >
                     <BsList className="icon" />
                 </button>
             </div>
-            <div className="product-data"> {filter_products.length} products available</div>
+            <div className="product-data" style={{ fontSize: "18px" }}>
+                {filter_products.length} products available
+            </div>
             <div className="sort-selection">
                 <form action="#">
                     <label htmlFor="sort"></label>
