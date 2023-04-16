@@ -1,8 +1,10 @@
 import React from "react";
 import CartAmountToggle from "./CartAmountToggle";
 import { FaTrash } from "react-icons/fa";
+import { useCartContext } from "../Context/Cart-context";
 
 const CartItem = ({ id, name, image, color, price, amount }) => {
+    const { removeItem } = useCartContext();
     const setDecrement = () => {
         // amount > 1 ? setAmount(amount - 1) : setAmount(1);
     };
@@ -47,7 +49,7 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
             </div>
 
             <div>
-                <FaTrash className="remove_icon" />
+                <FaTrash className="remove_icon" onClick={() => removeItem(id)} />
             </div>
         </div>
     );
