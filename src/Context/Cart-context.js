@@ -17,7 +17,7 @@ const initialState = {
     cart: getLocalCartData(),
     total_item: "",
     total_amount: "",
-    shipping_fee: 50000,
+    shipping_fee: 500,
 };
 
 const CartProvider = ({ children }) => {
@@ -41,8 +41,8 @@ const CartProvider = ({ children }) => {
         dispatch({ type: "CLEAR_CART" });
     };
     useEffect(() => {
-        // dispatch({ type: "CART_TOTAL_ITEM" });
-        // dispatch({ type: "CART_TOTAL_PRICE" });
+        dispatch({ type: "CART_TOTAL_ITEM" });
+        dispatch({ type: "CART_TOTAL_PRICE" });
         localStorage.setItem("e-Cart", JSON.stringify(state.cart));
     }, [state.cart]);
 

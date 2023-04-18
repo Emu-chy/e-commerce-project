@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
 
 const Cart = () => {
-    const { cart, clearCart } = useCartContext();
+    const { cart, clearCart, total_price, shipping_fee } = useCartContext();
 
     if (cart.length === 0) {
         return (
@@ -39,6 +39,23 @@ const Cart = () => {
                     <Button onClick={clearCart} className="btn btn-clear">
                         Clear Cart
                     </Button>
+                </div>
+                <div className="order-total--amount">
+                    <div className="order-total--subdata">
+                        <div>
+                            <p>subtotal:</p>
+                            <p>{total_price}</p>
+                        </div>
+                        <div>
+                            <p>shipping fee:</p>
+                            <p>{shipping_fee}</p>
+                        </div>
+                        <hr />
+                        <div>
+                            <p>order total:</p>
+                            <p>{shipping_fee + total_price}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Wrapper>
